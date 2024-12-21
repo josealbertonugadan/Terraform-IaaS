@@ -1,2 +1,2 @@
-# Terraform-IaaS
-Ejercicios y apuntes del curso de Terraform.
+# Terraform - infraestructura como código
+Curso de Terraform
