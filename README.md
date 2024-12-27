@@ -6,15 +6,28 @@ Validar que la configuración local está lista:
 ```
 aws sts get-caller-identity
 ```
-Archivos donde se encuentran las credenciales:
+Archivo donde se encuentran las credenciales:
 ```
 cat ~/.aws/credentials
 ```
 
-## Para aplicar cambios
+## Para descargar los archivos necesarios de terraform
 ```
 terraform init
+```
+
+## Para validar la sintaxis del código
+```
+terraform validate
+```
+
+## Para ver los cambios que se aplicarán
+```
 terraform plan
+```
+
+## Para aplicar los cambios
+```
 terraform apply
 ```
 
