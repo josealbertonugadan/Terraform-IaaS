@@ -2,21 +2,21 @@
 # Define el provider de AWS
 # -------------------------
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-east-1"
 }
 
 # -----------------------------------------------
-# Data source que obtiene el id del AZ eu-west-1a
+# Data source que obtiene el id del AZ us-east-1a
 # -----------------------------------------------
 data "aws_subnet" "az_a" {
-  availability_zone = "eu-west-1a"
+  availability_zone = "us-east-1a"
 }
 
 # -----------------------------------------------
-# Data source que obtiene el id del AZ eu-west-1a
+# Data source que obtiene el id del AZ us-east-1a
 # -----------------------------------------------
 data "aws_subnet" "az_b" {
-  availability_zone = "eu-west-1b"
+  availability_zone = "us-east-1b"
 }
 
 # ---------------------------------------
