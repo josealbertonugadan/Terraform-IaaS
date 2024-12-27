@@ -23,7 +23,7 @@ data "aws_subnet" "az_b" {
 # Define una instancia EC2 con AMI Ubuntu
 # ---------------------------------------
 resource "aws_instance" "servidor_1" {
-  ami                    = "ami-0aef57767f5404a3c"
+  ami                    = "ami-005fc0f236362e99f"
   instance_type          = "t2.micro"
   subnet_id              = data.aws_subnet.az_a.id
   vpc_security_group_ids = [aws_security_group.mi_grupo_de_seguridad.id]
@@ -31,10 +31,12 @@ resource "aws_instance" "servidor_1" {
   // Escribimos un "here document" que es
   // usado durante la inicialización
   user_data = <<-EOF
-              #!/bin/bash
-              echo "Hola Terraformers! Soy servidor 1" > index.html
-              nohup busybox httpd -f -p 8080 &
-              EOF
+            #!/bin/bash
+            apt-get update
+            apt-get install -y busybox-static
+            echo "Hola Terraformers!" > index.html
+            nohup busybox httpd -f -p 8080 &
+            EOF
 
   tags = {
     Name = "servidor-1"
@@ -45,16 +47,18 @@ resource "aws_instance" "servidor_1" {
 # Define la segunda instancia EC2 con AMI Ubuntu
 # ----------------------------------------------
 resource "aws_instance" "servidor_2" {
-  ami                    = "ami-0aef57767f5404a3c"
+  ami                    = "ami-005fc0f236362e99f"
   instance_type          = "t2.micro"
   subnet_id              = data.aws_subnet.az_b.id
   vpc_security_group_ids = [aws_security_group.mi_grupo_de_seguridad.id]
 
   user_data = <<-EOF
-              #!/bin/bash
-              echo "Hola Terraformers! Soy servidor 2" > index.html
-              nohup busybox httpd -f -p 8080 &
-              EOF
+            #!/bin/bash
+            apt-get update
+            apt-get install -y busybox-static
+            echo "Hola Terraformers!" > index.html
+            nohup busybox httpd -f -p 8080 &
+            EOF
 
   tags = {
     Name = "servidor-2"
